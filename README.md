@@ -1,7 +1,3 @@
-This is a comprehensive `README.md` designed for your repository. It covers the technical background, the unique AI-driven creation process, and provides detailed usage examples to meet the 1000-1500 word depth requirement.
-
-***
-
 # PdfPigGO
 
 **A High-Performance, Comprehensive PDF Parsing Library for Go**
