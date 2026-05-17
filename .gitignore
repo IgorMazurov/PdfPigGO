@@ -1,0 +1,39 @@
+# Binaries
+*.exe
+*.exe~
+*.test
+*.out
+
+# Build output
+dist/
+build/
+bin/
+
+# Vendor (if using go modules)
+vendor/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Go test cache
+.cache/
+coverage.out
+*.cover
+
+# Temporary files
+*.tmp
+*.log
+*.orig
+
+# Test output directories
+**/ColorSpaceTests/
+writer/Writer/
+writer/PdfPageBuilderTests_*.pdf
