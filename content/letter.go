@@ -35,6 +35,13 @@ type Letter struct {
 	FillColor         colors.Color
 	PointSize         float64
 	TextSequence      int
+	// Code is the raw character code this letter was decoded from. It is the value
+	// to pass to the font's TryGetPath/TryGetNormalisedPath to obtain the glyph outline.
+	Code int
+	// GlyphTransform maps the font's normalised glyph path (em units, as returned by
+	// TryGetNormalisedPath) into page space, including font size, text matrix and CTM.
+	// Apply it with TransformPath to obtain the on-page glyph outline.
+	GlyphTransform core.TransformationMatrix
 }
 
 // Location returns the placement position of the character in PDF space.
@@ -185,7 +192,7 @@ func newLetter(
 
 // AsBold returns a new Letter with the same properties but bold font details.
 func (l *Letter) AsBold() *Letter {
-	return newLetter(
+	bold := newLetter(
 		l.Value,
 		l.BoundingBox,
 		l.GlyphRectangleLoose,
@@ -201,6 +208,9 @@ func (l *Letter) AsBold() *Letter {
 		l.PointSize,
 		l.TextSequence,
 	)
+	bold.Code = l.Code
+	bold.GlyphTransform = l.GlyphTransform
+	return bold
 }
 
 // GetFont returns the font associated with this letter, or nil if unavailable.

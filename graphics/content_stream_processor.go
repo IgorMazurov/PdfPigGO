@@ -157,6 +157,8 @@ func (p *ContentStreamProcessor) RenderGlyph(
 					attachTo.PointSize,
 					attachTo.TextSequence,
 				)
+				letter.Code = attachTo.Code
+				letter.GlyphTransform = attachTo.GlyphTransform
 			}
 		}
 	}
@@ -196,6 +198,8 @@ func (p *ContentStreamProcessor) RenderGlyph(
 			pointSize,
 			p.TextSequence,
 		)
+		letter.Code = code
+		letter.GlyphTransform = renderingMatrix.Multiply(textMatrix).Multiply(transformationMatrix)
 	}
 
 	p.letters = append(p.letters, letter)
